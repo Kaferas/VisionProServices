@@ -3,14 +3,14 @@
 @section('content')
 <div class="container my-5">
     <div class="row justify-content-center">
-        <div class="col-lg-8">
+        <div class="col-lg-10">
             <div class="card shadow-lg border-0 rounded-4">
                 <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center rounded-top-4">
                     <h4 class="mb-0">
-                        <i class="fa fa-shield-alt me-2"></i> {{ isset($insurance) ? 'Edit Insurance' : 'Add Insurance' }}
+                        <i class="fa fa-shield-alt me-2"></i> {{ isset($insurance) ? 'Modifier Assurance' : 'Ajouter Assurance' }}
                     </h4>
                     <a href="{{ route('insurances.index') }}" class="btn btn-outline-light btn-sm">
-                        <i class="fa fa-arrow-left"></i> Back
+                        <i class="fa fa-arrow-left"></i> Retour
                     </a>
                 </div>
 
@@ -32,27 +32,27 @@
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Provider</label>
+                            <label class="form-label">Fournisseur</label>
                             <input type="text" name="provider" class="form-control" value="{{ old('provider',$insurance->provider ?? '') }}" required>
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Policy Number</label>
+                            <label class="form-label">Numero de Police</label>
                             <input type="text" name="policy_number" class="form-control" value="{{ old('policy_number',$insurance->policy_number ?? '') }}" required>
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Cost</label>
+                            <label class="form-label">Coût</label>
                             <input type="number" step="0.01" name="cost" class="form-control" value="{{ old('cost',$insurance->cost ?? '') }}" required>
                         </div>
 
                         <div class="row g-3">
                             <div class="col-md-6 mb-3">
-                                <label class="form-label">Start Date</label>
+                                <label class="form-label">Date de Début</label>
                                 <input type="date" name="start_date" class="form-control" value="{{ old('start_date',$insurance->start_date ?? '') }}" required>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label class="form-label">End Date</label>
+                                <label class="form-label">Date de Fin</label>
                                 <input type="date" name="end_date" class="form-control" value="{{ old('end_date',$insurance->end_date ?? '') }}" required>
                             </div>
                         </div>

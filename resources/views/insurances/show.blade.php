@@ -7,7 +7,7 @@
             <div class="card shadow-lg border-0 rounded-4">
                 <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center rounded-top-4">
                     <h4 class="mb-0">
-                        <i class="fa fa-shield-alt me-2"></i> Insurance Details
+                        <i class="fa fa-shield-alt me-2"></i> Détails Assurance
                     </h4>
                     <a href="{{ route('insurances.index') }}" class="btn btn-outline-light btn-sm">
                         <i class="fa fa-arrow-left me-1"></i> Back
@@ -17,27 +17,27 @@
                 <div class="card-body p-4">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <span><i class="fa fa-car me-2"></i>Car</span>
+                            <span><i class="fa fa-car me-2"></i>Voiture</span>
                             <span class="fw-bold">{{ $insurance->car->registration_number ?? 'N/A' }}</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <span><i class="fa fa-building me-2"></i>Provider</span>
+                            <span><i class="fa fa-building me-2"></i>Fournisseur</span>
                             <span>{{ $insurance->provider }}</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <span><i class="fa fa-file-contract me-2"></i>Policy #</span>
+                            <span><i class="fa fa-file-contract me-2"></i>Numero de Police</span>
                             <span>{{ $insurance->policy_number }}</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <span><i class="fa fa-dollar-sign me-2"></i>Cost</span>
-                            <span>${{ number_format($insurance->cost, 2) }}</span>
+                            <span><i class="fa fa-dollar-sign me-2"></i>Coût</span>
+                            <span>{{ number_format($insurance->cost, 2) }} FBU</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <span><i class="fa fa-calendar-alt me-2"></i>Start Date</span>
+                            <span><i class="fa fa-calendar-alt me-2"></i>Date de Début</span>
                             <span>{{ \Carbon\Carbon::parse($insurance->start_date)->format('d-m-Y') }}</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <span><i class="fa fa-calendar-check me-2"></i>End Date</span>
+                            <span><i class="fa fa-calendar-check me-2"></i>Date de Fin</span>
                             <span>{{ \Carbon\Carbon::parse($insurance->end_date)->format('d-m-Y') }}</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">

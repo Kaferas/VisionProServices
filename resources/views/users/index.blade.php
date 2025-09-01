@@ -4,14 +4,16 @@
 
 @section('content')
 <div class="container py-5">
-    <h2 class="text-center mb-4">Listes des Utilisateurs</h2>
+    <h2 class="mb-4">Listes des Utilisateurs</h2>
 
     <!-- Search & Actions -->
     <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
-        <form action="{{ route('users.index') }}" method="get" class="d-flex mb-2">
-            <input type="text" name="search" value="{{ old('search', '') }}" class="form-control me-2" placeholder="Search...">
-            <button class="btn btn-primary"><i class="bi bi-search"></i></button>
-        </form>
+       <form action="{{ route('users.index') }}" method="get" class="d-flex mb-2">
+    <input type="text" name="search" value="{{ old('search', '') }}"
+           class="form-control me-2 flex-grow-1" placeholder="Search...">
+    <button class="btn btn-primary"><i class="bi bi-search"></i></button>
+</form>
+
 
         <div class="d-flex align-items-center mb-2">
             <a href="{{ route('users.index') }}" class="btn btn-outline-secondary me-2"><i class="bi bi-arrow-clockwise"></i> Refresh</a>

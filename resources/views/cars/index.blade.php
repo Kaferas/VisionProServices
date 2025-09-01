@@ -1,5 +1,7 @@
 @extends('template')
 
+@section("tab_name", "Listes des Voitures")
+
 @section('content')
 <div class="container py-4">
     <div class="d-flex justify-content-between align-items-center mb-2">
@@ -21,15 +23,18 @@
         </a>
     </div>
 
-    <!-- Search + Filter --
+    <!-- Search + Filter -->
     <div class="card shadow-sm mb-4">
         <div class="card-body">
             <form method="GET" action="{{ route('cars.index') }}" class="row g-2 align-items-end">
+                <!-- Search -->
                 <div class="col-md-4">
                     <label class="form-label fw-semibold">Search</label>
                     <input type="text" name="search" value="{{ request('search') }}" class="form-control"
                         placeholder="Registration number or model">
                 </div>
+
+                <!-- Brand Filter -->
                 <div class="col-md-3">
                     <label class="form-label fw-semibold">Brand</label>
                     <select name="brand" class="form-select">
@@ -41,13 +46,15 @@
                         @endforeach
                     </select>
                 </div>
+
+                <!-- Buttons -->
                 <div class="col-md-2">
-                    <button type="submit" class="btn btn-primary w-70">
+                    <button type="submit" class="btn btn-primary w-100">
                         <i class="bi bi-filter"></i> 🔍 Filter
                     </button>
                 </div>
                 <div class="col-md-2">
-                    <a href="{{ route('cars.index') }}" class="btn btn-secondary w-70">
+                    <a href="{{ route('cars.index') }}" class="btn btn-secondary w-100">
                         <i class="bi bi-arrow-repeat"></i> 🔄 Reset
                     </a>
                 </div>
@@ -59,15 +66,15 @@
     <div class="card shadow-sm">
         <div class="card-body p-0">
             <div class="table-responsive">
-                <table class="table table-hover mb-0 align-middle text-center"">
+                <table class="table table-hover mb-0 align-middle text-center">
                     <thead class="table-dark">
                         <tr>
                             <th>Photo</th>
-                            <th>Registration</th>
-                            <th>Brand</th>
-                            <th>Model</th>
-                            <th>Year</th>
-                            <th>Mileage (km)</th>
+                            <th>Inscription</th>
+                            <th>Marque</th>
+                            <th>Modèle</th>
+                            <th>Année</th>
+                            <th>Kilométrage (km)</th>
                             <th class="text-center">Actions</th>
                         </tr>
                     </thead>

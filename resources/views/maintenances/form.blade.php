@@ -4,7 +4,7 @@
 <div class="container">
     <h1>{{ isset($maintenance) ? 'Edit Maintenance' : 'Add Maintenance' }}</h1>
 
-    <form action="{{ isset($maintenance) ? route('maintenances.update',$maintenance) : route('maintenances.store') }}" method="POST">
+    <form class="card p-3" action="{{ isset($maintenance) ? route('maintenances.update',$maintenance) : route('maintenances.store') }}" method="POST">
         @csrf
         @if(isset($maintenance)) @method('PUT') @endif
 
@@ -21,12 +21,12 @@
         </div>
 
         <div class="mb-3">
-            <label>Service Type</label>
+            <label>Type de Service</label>
             <input type="text" name="service_type" class="form-control" value="{{ old('service_type',$maintenance->service_type ?? '') }}" required>
         </div>
 
         <div class="mb-3">
-            <label>Cost</label>
+            <label>Coût</label>
             <input type="number" step="0.01" name="cost" class="form-control" value="{{ old('cost',$maintenance->cost ?? '') }}" required>
         </div>
 
@@ -36,7 +36,7 @@
         </div>
 
         <div class="mb-3">
-            <label>Mileage at Service</label>
+            <label>Kilométrage au service</label>
             <input type="number" name="mileage_at_service" class="form-control" value="{{ old('mileage_at_service',$maintenance->mileage_at_service ?? '') }}" required>
         </div>
 
@@ -50,8 +50,10 @@
             <textarea name="notes" class="form-control">{{ old('notes',$maintenance->notes ?? '') }}</textarea>
         </div>
 
-        <button class="btn btn-success">{{ isset($maintenance) ? 'Update' : 'Save' }}</button>
+        <div class="d-flex">
+            <button class="btn btn-success">{{ isset($maintenance) ? 'Update' : 'Save' }}</button>
         <a href="{{ route('maintenances.index') }}" class="btn btn-secondary">Cancel</a>
+        </div>
     </form>
 </div>
 @endsection

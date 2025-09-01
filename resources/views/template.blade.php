@@ -42,7 +42,7 @@
 
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link rel="stylesheet" href="{{ asset('assets/css/demo.css') }}" />
-
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -53,8 +53,8 @@
                 <!-- Logo Header -->
                 <div class="logo-header" data-background-color="dark">
                     <a href="index-2.html" class="logo">
-                        <img src="{{ asset('assets/img/kaiadmin/logo_light.svg') }}" alt="navbar brand"
-                            class="navbar-brand" height="20" />
+                        <img src="{{ asset('logo.png') }}" alt="navbar brand"
+                            class="navbar-brand" height="60" style="max-width: 90%; height: auto; margin-top:50px" />
                     </a>
                     <div class="nav-toggle">
                         <button class="btn btn-toggle toggle-sidebar">
@@ -70,20 +70,19 @@
                 </div>
                 <!-- End Logo Header -->
             </div>
-            <div class="sidebar-wrapper scrollbar scrollbar-inner">
+            <div class="sidebar-wrapper scrollbar scrollbar-inner" style="margin-top: 40px">
                 <div class="sidebar-content">
                     <ul class="nav nav-secondary">
                         <li class="nav-item">
-                            <a href="https://themewagon.github.io/documentation/index.html">
-                                <i class="fas fa-file"></i>
-                                <p>📊 Tableau Bord</p>
+                            <a href="{{ route("dashboard") }}">
+                                 <span class="sub-item"><i data-feather="command"></i> Tableau de Bord</span>
                             </a>
                         </li>
                         <li class="nav-section">
                             <span class="sidebar-mini-icon">
                                 <i class="fa fa-ellipsis-h"></i>
                             </span>
-                            <h4 class="text-section">Menu</h4>
+                            <h4 class="text-section text-light"><strong>Menu</strong></h4>
                             <hr class="text text-info">
                         </li>
                         <li class="nav-item">
@@ -91,42 +90,91 @@
                                 <ul class="nav nav-collapse">
                                     <li class="">
                                         <a href="{{{ route("cars.index") }}}">
-                                            <span class="sub-item">🚗 Vehicules</span>
+                                         <span class="sub-item"><i data-feather="truck"></i> Vehicules</span>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="{{ route("drivers.index") }}">
-                                            <span class="sub-item">👨‍✈️ Chauffeurs</span>
+                                            <span class="sub-item"><i data-feather="user"></i> Chauffeurs</span>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="{{ route("expenses.index") }}">
-                                            <span class="sub-item">💰 Depenses</span>
+                                            <span class="sub-item"><i data-feather="maximize-2"></i> Depenses</span>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="{{ route("insurances.index") }}">
-                                            <span class="sub-item">🛡️ Assurances</span>
+                                            <span class="sub-item"><i data-feather="shield"></i> Assurances</span>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="{{ route("maintenances.index") }}">
-                                            <span class="sub-item">🔧 Maintenances</span>
+                                            <span class="sub-item"><i data-feather="tool"></i> Maintenances</span>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="{{ route("refuelings.index") }}">
-                                            <span class="sub-item">⛽ Ravitaillement</span>
+                                            <span class="sub-item"><i data-feather="fuel"></i> Ravitaillement</span>
                                         </a>
                                     </li>
                                 </ul>
                             </div>
                         </li>
-
-                        <li class="nav-item">
+                         <li class="nav-section">
+                            <span class="sidebar-mini-icon">
+                                <i class="fa fa-ellipsis-h"></i>
+                            </span>
+                            <h4 class="text-section text-light"><strong>Stock Management</strong></h4>
+                            <hr class="text text-info">
+                        </li>
+                            <li class="nav-item">
+                            <div class="collapse show" id="base"> <!-- add 'show' class to keep it open -->
+                                <ul class="nav nav-collapse">
+                                    <li class="">
+                                        <a href="{{{ route("product.index") }}}">
+                                           <span class="sub-item"><i data-feather="package"></i> Produits</span>
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="{{{ route("supply.index") }}}">
+                                            <span class="sub-item"><i data-feather="shopping-cart"></i> Approvisionnements</span>
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="{{{ route("inventory.index") }}}">
+                                            <span class="sub-item text-light"><i data-feather="activity"></i> Inventaire</span>
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="{{{ route("sortie.index") }}}">
+                                            <span class="sub-item"><i data-feather="external-link"></i> Sorties</span>
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="{{{ route("category.index") }}}">
+                                            <span class="sub-item"><i data-feather="tag"></i> Catégorie</span>
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="{{{ route("unity.index") }}}">
+                                            <span class="sub-item"><i data-feather="layers"></i> Unite de Mesure</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-section">
+                            <span class="sidebar-mini-icon">
+                                <i class="fa fa-ellipsis-h"></i>
+                            </span>
+                            <h4 class="text-section">User Management</h4>
+                            <hr class="text text-info">
+                        </li>
+                        <li class="nav-item mb-5">
                             <a href="{{ route("users.index") }}">
                                 <i class="fas fa-file"></i>
-                                <p>👥 User Management</p>
+                                <span class="sub-item"><i data-feather="user-plus"></i> Users</span>
                             </a>
                         </li>
                     </ul>
@@ -161,7 +209,7 @@
                 <!-- Navbar Header -->
                 <nav class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom">
                     <div class="container-fluid">
-                        <nav
+                        {{-- <nav
                             class="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex">
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -171,7 +219,7 @@
                                 </div>
                                 <input type="text" placeholder="Search ..." class="form-control" />
                             </div>
-                        </nav>
+                        </nav> --}}
 
                         <ul class="navbar-nav topbar-nav ms-md-auto align-items-center">
                             <li class="nav-item topbar-icon dropdown hidden-caret d-flex d-lg-none">
@@ -260,7 +308,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="nav-item topbar-icon dropdown hidden-caret">
+                            {{-- <li class="nav-item topbar-icon dropdown hidden-caret">
                                 <a class="nav-link dropdown-toggle" href="#" id="notifDropdown" role="button"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fa fa-bell"></i>
@@ -324,8 +372,8 @@
                                         </a>
                                     </li>
                                 </ul>
-                            </li>
-                            <li class="nav-item topbar-icon dropdown hidden-caret">
+                            </li> --}}
+                            {{-- <li class="nav-item topbar-icon dropdown hidden-caret">
                                 <a class="nav-link" data-bs-toggle="dropdown" href="#" aria-expanded="false">
                                     <i class="fas fa-layer-group"></i>
                                 </a>
@@ -389,7 +437,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </li>
+                            </li> --}}
 
                             <li class="nav-item topbar-user dropdown hidden-caret">
                                 <a class="dropdown-toggle profile-pic" data-bs-toggle="dropdown" href="#"
@@ -400,34 +448,28 @@
                                     </div>
                                     <span class="profile-username">
                                         <span class="op-7">Hi,</span>
-                                        <span class="fw-bold">{{ Auth::user()->name }}</span>
+                                        <span class="fw-bold">{{ Auth::user()->name ?? "" }}</span>
                                     </span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-user animated fadeIn">
                                     <div class="dropdown-user-scroll scrollbar-outer">
                                         <li>
                                             <div class="user-box">
-                                                <div class="avatar-lg">
+                                                {{-- <div class="avatar-lg">
                                                     <img src="{{ asset('assets/img/profile.jpg') }}"
                                                         alt="image profile" class="avatar-img rounded" />
-                                                </div>
+                                                </div> --}}
                                                 <div class="u-text">
-                                                    <h4>{{ Auth::user()->name }}</h4>
-                                                    <p class="text-muted">{{ Auth::user()->email }}</p>
-                                                    <a href="profile.html"
-                                                        class="btn btn-xs btn-secondary btn-sm">View Profile</a>
+                                                    <h4>{{ Auth::user()->name ?? "" }}</h4>
+                                                    <p class="text-muted">{{ Auth::user()->email ?? "" }}</p>
                                                 </div>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">My Profile</a>
-                                            <a class="dropdown-item" href="#">My Balance</a>
-                                            <a class="dropdown-item" href="#">Inbox</a>
+                                            <a class="dropdown-item" href="#">🧑 My Profile</a>
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Account Setting</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Logout</a>
+                                            <a class="dropdown-item" href="#"> 🚪 Logout</a>
                                         </li>
                                     </div>
                                 </ul>
@@ -447,36 +489,21 @@
             </div>
 
             <footer class="footer">
-                <div class="container-fluid d-flex justify-content-between">
-                    <nav class="pull-left">
-                        <ul class="nav">
-                            <li class="nav-item">
-                                <a class="nav-link" href="http://www.themekita.com/">
-                                    ThemeKita
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#"> Help </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#"> Licenses </a>
-                            </li>
-                        </ul>
-                    </nav>
+                <div class="container-fluid d-flex justify-content-around">
                     <div class="copyright">
-                        2024, made with <i class="fa fa-heart heart text-danger"></i> by
-                        <a href="http://www.themekita.com/">ThemeKita</a>
+                        {{ date('Y')=="2025" ? "" : "2025 -" }} {{ date("Y") }}, made with <i class="fa fa-heart heart text-danger"></i> by
+                        <a href="https://github.com/Kaferas">Kaferas</a>
                     </div>
                     <div>
                         Distributed by
-                        <a target="_blank" href="https://themewagon.com/">ThemeWagon</a>.
+                        <a target="_blank" href="https://itara-nexus.com">ITARA NEXUS</a>.
                     </div>
                 </div>
             </footer>
         </div>
 
         <!-- Custom template | don't include it in your project! -->
-        <div class="custom-template">
+        {{-- <div class="custom-template">
             <div class="title">Settings</div>
             <div class="custom-content">
                 <div class="switcher">
@@ -535,7 +562,7 @@
             <div class="custom-toggle">
                 <i class="icon-settings"></i>
             </div>
-        </div>
+        </div> --}}
         <!-- End Custom template -->
     </div>
     <!--   Core JS Files   -->
@@ -570,7 +597,7 @@
 
     <!-- Kaiadmin JS -->
     <script src="{{ asset('assets/js/kaiadmin.min.js') }}"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
     <!-- Kaiadmin DEMO methods, don't include it in your project! -->
     <script src="{{ asset('assets/js/setting-demo.js') }}"></script>
     <script src="{{ asset('assets/js/demo.js') }}"></script>
@@ -602,6 +629,11 @@
             fillColor: "rgba(255, 165, 52, .14)",
         });
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+<script>
+  feather.replace()
+</script>
+    @yield("js_content");
 </body>
 
 <!-- Mirrored from themewagon.github.io/kaiadmin-lite/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 25 Jul 2025 09:59:09 GMT -->

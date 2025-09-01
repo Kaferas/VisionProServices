@@ -7,7 +7,7 @@
             <div class="card shadow-lg border-0 rounded-4">
                 <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center rounded-top-4">
                     <h4 class="mb-0">
-                        <i class="fa fa-id-badge me-2"></i> {{ isset($driver) ? 'Edit Driver' : 'Add Driver' }}
+                        <i class="fa fa-id-badge me-2"></i> {{ isset($driver) ? 'Modifier Chauffeur' : 'Ajouter Chauffeur' }}
                     </h4>
                     <a href="{{ route('drivers.index') }}" class="btn btn-outline-light btn-sm">
                         <i class="fa fa-arrow-left"></i> Back
@@ -20,12 +20,12 @@
                         @if(isset($driver)) @method('PUT') @endif
 
                         <div class="mb-3">
-                            <label class="form-label">Name</label>
+                            <label class="form-label">Nom Chauffeur</label>
                             <input type="text" name="name" class="form-control" value="{{ old('name',$driver->name ?? '') }}" required>
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Phone</label>
+                            <label class="form-label">Téléphone</label>
                             <input type="text" name="phone" class="form-control" value="{{ old('phone',$driver->phone ?? '') }}">
                         </div>
 
@@ -35,12 +35,12 @@
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">License Number</label>
+                            <label class="form-label">Numero Permis</label>
                             <input type="text" name="license_number" class="form-control" value="{{ old('license_number',$driver->license_number ?? '') }}">
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">License Expiry</label>
+                            <label class="form-label">Date d'Expiration Permis</label>
                             <input type="date" name="license_expiry" class="form-control" value="{{ old('license_expiry',$driver->license_expiry ?? '') }}">
                         </div>
 

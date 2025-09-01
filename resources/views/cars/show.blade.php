@@ -1,5 +1,7 @@
 @extends('template')
 
+@section("tab_name", "Visualiser Voiture")
+
 @section('content')
 <div class="container my-5">
     <div class="row justify-content-center">
@@ -7,10 +9,10 @@
             <div class="card shadow-lg border-0 rounded-4">
                 <div class="card-header bg-dark text-white rounded-top-4 d-flex justify-content-between align-items-center">
                     <h4 class="mb-0">
-                        <i class="bi bi-car-front-fill me-2"></i> Car Details
+                        <i class="bi bi-car-front-fill me-2"></i> Détails de la voiture
                     </h4>
                     <a href="{{ route('cars.index') }}" class="btn btn-outline-light btn-sm">
-                        <i class="bi bi-arrow-left-circle"></i> Back
+                        <i class="bi bi-arrow-left-circle"></i> Retour
                     </a>
                 </div>
 
@@ -30,24 +32,24 @@
                         <div class="col-md-7">
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">
-                                    <strong><i class="bi bi-hash me-2"></i>Registration:</strong>
+                                    <strong><i class="bi bi-hash me-2"></i>Numéro Matricule:</strong>
                                     {{ $car->registration_number }}
                                 </li>
                                 <li class="list-group-item">
-                                    <strong><i class="bi bi-car-front me-2"></i>Brand:</strong>
+                                    <strong><i class="bi bi-car-front me-2"></i>Marque:</strong>
                                     {{ $car->brand }}
                                 </li>
                                 <li class="list-group-item">
-                                    <strong><i class="bi bi-cpu me-2"></i>Model:</strong>
+                                    <strong><i class="bi bi-cpu me-2"></i>Modèle:</strong>
                                     {{ $car->model }}
                                 </li>
                                 <li class="list-group-item">
-                                    <strong><i class="bi bi-calendar3 me-2"></i>Year:</strong>
+                                    <strong><i class="bi bi-calendar3 me-2"></i>Année:</strong>
                                     {{ $car->year }}
                                 </li>
                                 <li class="list-group-item">
-                                    <strong><i class="bi bi-speedometer2 me-2"></i>Mileage:</strong>
-                                    {{ number_format($car->mileage) }} km
+                                    <strong><i class="bi bi-speedometer2 me-2"></i>Kilométrage (km):</strong>
+                                    <span>{{ number_format($car->mileage) }} km</span>
                                 </li>
                                 <li class="list-group-item">
                                     <strong><i class="bi bi-check-circle me-2"></i>Status:</strong>
@@ -62,7 +64,7 @@
 
                 <div class="card-footer bg-light text-end rounded-bottom-4">
                     <a href="{{ route('cars.edit',$car) }}" class="btn btn-warning me-2">
-                        <i class="bi bi-pencil-square"></i> Edit
+                        <i class="bi bi-pencil-square"></i> Editer
                     </a>
                     <form action="{{ route('cars.destroy',$car) }}" method="POST" class="d-inline">
                         @csrf

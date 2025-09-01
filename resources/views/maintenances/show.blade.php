@@ -17,15 +17,15 @@
                 <div class="card-body p-4">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <span><i class="fa fa-car me-2"></i> Car</span>
+                            <span><i class="fa fa-car me-2"></i> Voiture</span>
                             <span class="fw-bold">{{ $maintenance->car->registration_number ?? 'N/A' }}</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <span><i class="fa fa-cogs me-2"></i> Service Type</span>
+                            <span><i class="fa fa-cogs me-2"></i> Type de Service</span>
                             <span>{{ $maintenance->service_type }}</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <span><i class="fa fa-dollar-sign me-2"></i> Cost</span>
+                            <span><i class="fa fa-dollar-sign me-2"></i> Coût</span>
                             <span>${{ number_format($maintenance->cost, 2) }}</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -33,7 +33,7 @@
                             <span>{{ \Carbon\Carbon::parse($maintenance->date)->format('d-m-Y') }}</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <span><i class="fa fa-tachometer-alt me-2"></i> Mileage at Service</span>
+                            <span><i class="fa fa-tachometer-alt me-2"></i> Kilométrage au Service</span>
                             <span>{{ $maintenance->mileage_at_service }} km</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -49,7 +49,7 @@
 
                 <div class="card-footer bg-light text-end rounded-bottom-4">
                     <a href="{{ route('maintenances.edit', $maintenance) }}" class="btn btn-warning me-2">
-                        <i class="fa fa-pencil-alt me-1"></i> Edit
+                        <i class="fa fa-pencil-alt me-1"></i> Editer
                     </a>
                     <form action="{{ route('maintenances.destroy', $maintenance) }}" method="POST" class="d-inline">
                         @csrf

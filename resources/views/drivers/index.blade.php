@@ -1,5 +1,7 @@
 @extends('template')
 
+@section("tab_name", "listes des Chauffeurs")
+
 @section('content')
 <div class="container py-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -43,10 +45,10 @@
                     <thead class="table-light">
                         <tr>
                             <th>Photo</th>
-                            <th>Name</th>
-                            <th>License Number</th>
-                            <th>Expiry Date</th>
-                            <th>Phone</th>
+                            <th>Nom du Chauffeur</th>
+                            <th>Numero Permis</th>
+                            <th>Date d'Expiration</th>
+                            <th>Téléphone</th>
                             <th class="text-center">Actions</th>
                         </tr>
                     </thead>

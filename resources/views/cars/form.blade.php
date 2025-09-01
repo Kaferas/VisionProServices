@@ -8,7 +8,7 @@
                 <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center rounded-top-4">
                     <h4 class="mb-0">
                         <i class="bi bi-car-front-fill me-2"></i>
-                        {{ isset($car) ? 'Edit Car' : 'Add New Car' }}
+                        {{ isset($car) ? 'Modifier la Voiture' : 'Ajouter une Nouvelle Voiture' }}
                     </h4>
                 </div>
 
@@ -18,14 +18,14 @@
                         @if(isset($car)) @method('PUT') @endif
 
                         <div class="col-md-6">
-                            <label class="form-label fw-bold">Registration Number</label>
+                            <label class="form-label fw-bold">Numéro Matricule</label>
                             <input type="text" name="registration_number"
                                    value="{{ old('registration_number',$car->registration_number ?? '') }}"
                                    class="form-control rounded-3" placeholder="e.g. ABC-1234" required>
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label fw-bold">Brand</label>
+                            <label class="form-label fw-bold">Marque</label>
                             <input type="text" name="brand"
                                    value="{{ old('brand',$car->brand ?? '') }}"
                                    class="form-control rounded-3" placeholder="e.g. Toyota" required>
@@ -39,14 +39,14 @@
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label fw-bold">Year</label>
+                            <label class="form-label fw-bold">Année</label>
                             <input type="number" name="year"
                                    value="{{ old('year',$car->year ?? '') }}"
                                    class="form-control rounded-3" placeholder="e.g. 2020" required>
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label fw-bold">Mileage</label>
+                            <label class="form-label fw-bold">Kilométrage (km)</label>
                             <input type="number" name="mileage"
                                    value="{{ old('mileage',$car->mileage ?? '') }}"
                                    class="form-control rounded-3" placeholder="e.g. 55000">
@@ -64,10 +64,10 @@
 
                         <div class="col-12 d-flex justify-content-end mt-4">
                             <a href="{{ route('cars.index') }}" class="btn btn-outline-secondary me-2 px-4">
-                                <i class="bi bi-x-circle"></i> Cancel
+                                <i class="bi bi-x-circle"></i> Annuler
                             </a>
                             <button class="btn btn-success px-4">
-                                <i class="bi bi-save"></i> {{ isset($car) ? 'Update' : 'Save' }}
+                                <i class="bi bi-save"></i> {{ isset($car) ? 'Mettre à jour' : 'Enregistrer' }}
                             </button>
                         </div>
                     </form>

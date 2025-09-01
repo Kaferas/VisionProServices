@@ -4,14 +4,14 @@
 <div class="container">
     <h1>{{ isset($expense) ? 'Edit Expense' : 'Add Expense' }}</h1>
 
-    <form action="{{ isset($expense) ? route('expenses.update',$expense) : route('expenses.store') }}" method="POST">
+    <form class="card p-3" action="{{ isset($expense) ? route('expenses.update',$expense) : route('expenses.store') }}" method="POST">
         @csrf
         @if(isset($expense)) @method('PUT') @endif
 
         <div class="mb-3">
-            <label>Car</label>
+            <label>Voiture</label>
             <select name="car_id" class="form-control" required>
-                <option value="">Select Car</option>
+                <option value="">Selectionner Voiture</option>
                 @foreach($cars as $car)
                     <option value="{{ $car->id }}" {{ (isset($expense) && $expense->car_id==$car->id) ? 'selected' : '' }}>
                         {{ $car->registration_number }}
@@ -21,7 +21,7 @@
         </div>
 
         <div class="mb-3">
-            <label>Type</label>
+            <label>Type depense</label>
             <select name="type" class="form-control" required>
                 <option value="">Select Type</option>
                 @foreach(['carburant','entretien','assurance','réparation','taxe','autre'] as $type)
@@ -33,7 +33,7 @@
         </div>
 
         <div class="mb-3">
-            <label>Amount</label>
+            <label>Montant</label>
             <input type="number" step="0.01" name="amount" class="form-control" value="{{ old('amount',$expense->amount ?? '') }}" required>
         </div>
 
@@ -43,7 +43,7 @@
         </div>
 
         <div class="mb-3">
-            <label>Payment Method</label>
+            <label>Méthode de Paiement</label>
             <input type="text" name="payment_method" class="form-control" value="{{ old('payment_method',$expense->payment_method ?? '') }}">
         </div>
 
@@ -52,8 +52,10 @@
             <textarea name="description" class="form-control">{{ old('description',$expense->description ?? '') }}</textarea>
         </div>
 
-        <button class="btn btn-success">{{ isset($expense) ? 'Update' : 'Save' }}</button>
+        <div class="d-flex">
+            <button class="btn btn-success">{{ isset($expense) ? 'Update' : 'Save' }}</button>
         <a href="{{ route('expenses.index') }}" class="btn btn-secondary">Cancel</a>
+        </div>
     </form>
 </div>
 @endsection

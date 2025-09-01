@@ -1,5 +1,7 @@
 @extends('template')
 
+@section("tab_name", "listes des Depenses")
+
 @section('content')
 <div class="container py-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -42,11 +44,11 @@
                 <table class="table table-hover align-middle mb-0">
                     <thead class="table-light">
                         <tr>
-                            <th>Car</th>
-                            <th>Policy Number</th>
-                            <th>Provider</th>
-                            <th>Cost</th>
-                            <th>Expiry Date</th>
+                            <th>Voiture</th>
+                            <th>Numero de Police</th>
+                            <th>Fournisseur</th>
+                            <th>Coût</th>
+                            <th>Date d'Expiration</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -55,7 +57,7 @@
                                 <td>{{ $i->car->registration_number ?? 'N/A' }}</td>
                                 <td>{{ $i->policy_number }}</td>
                                 <td>{{ $i->provider }}</td>
-                                <td>${{ number_format($i->cost, 2) }}</td>
+                                <td>{{ number_format($i->cost, 2) }} FBU</td>
                                 <td>
                                     <span class="badge {{ \Carbon\Carbon::parse($i->expiry_date)->isPast() ? 'bg-danger' : 'bg-success' }}">
                                         {{ \Carbon\Carbon::parse($i->expiry_date)->format('d-m-Y') }}

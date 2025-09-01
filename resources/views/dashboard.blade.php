@@ -1,34 +1,37 @@
 @extends('template')
 
+@section("tab_name", "Tableau de Bord")
+
 @section('content')
 <div class="container py-5">
     <h1 class="mb-4 text-center"><i class="fa fa-tachometer-alt me-2"></i> Tableau de Bord </h1>
     <div class="row g-4">
         <div class="col-md-6">
             <div class="card shadow rounded-4 p-4">
-                <h5 class="card-title"><i class="fa fa-dollar-sign me-2"></i>Total Expenses per Car</h5>
-                <canvas id="expensesChart" height="350"></canvas>
+                <h5 class="card-title"><i class="fa fa-dollar-sign me-2"></i>
+Dépenses totales par voiture</h5>
+                <canvas id="expensesChart" height="300"></canvas>
             </div>
         </div>
 
         <div class="col-md-6">
             <div class="card shadow rounded-4 p-4">
-                <h5 class="card-title"><i class="fa fa-gas-pump me-2"></i>Monthly Refueling Costs</h5>
-                <canvas id="refuelingChart" height="350"></canvas>
+                <h5 class="card-title"><i class="fa fa-gas-pump me-2"></i>Dépenses mensuelles de ravitaillement</h5>
+                <canvas id="refuelingChart" height="300"></canvas>
             </div>
         </div>
 
         <div class="col-md-6">
             <div class="card shadow rounded-4 p-4">
-                <h5 class="card-title"><i class="fa fa-tools me-2"></i>Maintenance Costs per Car</h5>
-                <canvas id="maintenanceChart" height="350"></canvas>
+                <h5 class="card-title"><i class="fa fa-tools me-2"></i>Dépenses de maintenance par voiture</h5>
+                <canvas id="maintenanceChart" height="300"></canvas>
             </div>
         </div>
 
         <div class="col-md-6">
             <div class="card shadow rounded-4 p-4">
-                <h5 class="card-title"><i class="fa fa-shield-alt me-2"></i>Insurance Count per Car</h5>
-                <canvas id="insuranceChart" height="350"></canvas>
+                <h5 class="card-title"><i class="fa fa-shield-alt me-2"></i>Nombre d'Assurances par Voiture</h5>
+                <canvas id="insuranceChart" height="300"></canvas>
             </div>
         </div>
     </div>

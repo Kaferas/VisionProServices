@@ -1,5 +1,8 @@
 @extends('template')
 
+
+@section("tab_name", "listes des Maintenances")
+
 @section('content')
 <div class="container py-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -49,10 +52,10 @@
                 <table class="table table-hover align-middle mb-0">
                     <thead class="table-light">
                         <tr>
-                            <th>Car</th>
+                            <th>Voiture</th>
                             <th>Type</th>
                             <th>Description</th>
-                            <th>Cost</th>
+                            <th>Coût</th>
                             <th>Date</th>
                             <th>Actions</th>
                         </tr>
