@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\CarsExport;
+use App\Models\CarCategory;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 
@@ -25,7 +26,7 @@ class CarController extends Controller
             $query->where('brand', $request->brand);
         }
         $cars = $query->paginate(10);
-        $brands = Car::select('brand')->distinct()->pluck('brand');
+        $brands = Car::select('brand')->with('category')->orderBy('id','DESC')->distinct()->pluck('brand');
         return view('cars.index', compact('cars', 'brands'));
     }
 
@@ -54,7 +55,8 @@ public function exportPDF(Request $request)
 
     public function create()
     {
-        return view('cars.form');
+        $categories = CarCategory::all();
+        return view('cars.form', compact('categories'));
     }
 
     public function store(Request $request)
@@ -65,15 +67,14 @@ public function exportPDF(Request $request)
             'model' => 'required|string',
             'year' => 'required|integer',
             'color' => 'nullable|string',
+            'category_id' => 'required',
             'mileage' => 'nullable|integer',
             'fuel_type' => 'nullable|string',
             'photo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
-
         if ($request->hasFile('photo')) {
             $data['photo'] = $request->file('photo')->store('cars', 'public');
         }
-
         Car::create($data);
 
         return redirect()->route('cars.index')->with('success', 'Car added successfully!');
@@ -86,7 +87,8 @@ public function exportPDF(Request $request)
 
     public function edit(Car $car)
     {
-        return view('cars.form', compact('car'));
+        $categories = CarCategory::all();
+        return view('cars.form', compact('car', 'categories'));
     }
 
     public function update(Request $request, Car $car)
@@ -96,12 +98,12 @@ public function exportPDF(Request $request)
             'brand' => 'required|string',
             'model' => 'required|string',
             'year' => 'required|integer',
+            'category_id' => 'required',
             'color' => 'nullable|string',
             'mileage' => 'nullable|integer',
             'fuel_type' => 'nullable|string',
             'photo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
-
         if ($request->hasFile('photo')) {
             if ($car->photo) {
                 Storage::disk('public')->delete($car->photo);

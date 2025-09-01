@@ -16,7 +16,6 @@ class DashboardController extends Controller
         $totalExpenses = \App\Models\Expense::selectRaw('car_id, SUM(amount) as total')
             ->groupBy('car_id')
             ->pluck('total')->toArray();
-
         $monthlyRefuels = \App\Models\Refueling::selectRaw('MONTH(date) as month, SUM(total_cost) as total')
             ->groupBy('month')
             ->orderBy('month')
@@ -31,7 +30,6 @@ class DashboardController extends Controller
         $insuranceCounts = \App\Models\Insurance::selectRaw('car_id, COUNT(*) as total')
             ->groupBy('car_id')
             ->pluck('total')->toArray();
-
         return view('dashboard', compact('cars', 'totalExpenses', 'months', 'monthlyRefuels', 'totalMaintenances', 'insuranceCounts'));
     }
 

@@ -36,19 +36,21 @@ Dépenses totales par voiture</h5>
         </div>
     </div>
 </div>
-
-<!-- Chart.js CDN -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<script>
+@endsection
+@section('js_content')
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
     // Utility function for plucking car registration numbers
-    const carLabels = {!! json_encode($cars->pluck('registration_number')) !!};
-
+    const cars = {!! json_encode($cars) !!};
+    const months = {!! json_encode($months) !!};
+    const totalMaintenances = {!! json_encode($totalMaintenances) !!};
+    const insuranceCounts = {!! json_encode($insuranceCounts) !!};
+    console.log(totalMaintenances,months,cars);
     // Expenses per Car
     new Chart(document.getElementById('expensesChart'), {
-        type: 'bar',
+        type: 'polarArea',
         data: {
-            labels: carLabels,
+            labels: cars,
             datasets: [{
                 label: 'Total Expenses ($)',
                 data: {!! json_encode($totalExpenses) !!},
@@ -62,9 +64,9 @@ Dépenses totales par voiture</h5>
 
     // Monthly Refueling Costs
     new Chart(document.getElementById('refuelingChart'), {
-        type: 'line',
+        type: 'doughnut',
         data: {
-            labels: {!! json_encode($months) !!},
+            labels: months,
             datasets: [{
                 label: 'Refueling Costs ($)',
                 data: {!! json_encode($monthlyRefuels) !!},
@@ -81,12 +83,12 @@ Dépenses totales par voiture</h5>
     new Chart(document.getElementById('maintenanceChart'), {
         type: 'bar',
         data: {
-            labels: carLabels,
+            labels: cars,
             datasets: [{
                 label: 'Maintenance ($)',
                 data: {!! json_encode($totalMaintenances) !!},
-                backgroundColor: 'rgba(255, 99, 132, 0.6)',
-                borderColor: 'rgba(255, 99, 132, 1)',
+                backgroundColor: 'rgba(225, 99, 182, 0.6)',
+                borderColor: 'rgba(255, 39, 112, 1)',
                 borderWidth: 1
             }]
         },
@@ -97,12 +99,12 @@ Dépenses totales par voiture</h5>
     new Chart(document.getElementById('insuranceChart'), {
         type: 'bar',
         data: {
-            labels: carLabels,
+            labels: cars,
             datasets: [{
                 label: 'Insurance Count',
                 data: {!! json_encode($insuranceCounts) !!},
-                backgroundColor: 'rgba(75, 192, 192, 0.6)',
-                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgba(75, 92, 192, 0.6)',
+                borderColor: 'rgba(5, 192, 12, 1)',
                 borderWidth: 1
             }]
         },

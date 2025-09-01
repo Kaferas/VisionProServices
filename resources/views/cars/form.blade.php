@@ -32,7 +32,7 @@
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label fw-bold">Model</label>
+                            <label class="form-label fw-bold">Modèle</label>
                             <input type="text" name="model"
                                    value="{{ old('model',$car->model ?? '') }}"
                                    class="form-control rounded-3" placeholder="e.g. Corolla" required>
@@ -50,6 +50,20 @@
                             <input type="number" name="mileage"
                                    value="{{ old('mileage',$car->mileage ?? '') }}"
                                    class="form-control rounded-3" placeholder="e.g. 55000">
+                        </div>
+
+                        {{-- Sélection de la catégorie --}}
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Catégorie</label>
+                            <select name="category_id" class="form-select rounded-3" required>
+                                <option value="" disabled selected>-- Choisir une catégorie --</option>
+                                @foreach($categories as $category)
+                                    <option value="{{ $category->category_id }}"
+                                        {{ old('category_id',$car->category_id ?? '') == $category->id ? 'selected' : '' }}>
+                                        {{ $category->title }}
+                                    </option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <div class="col-md-6">

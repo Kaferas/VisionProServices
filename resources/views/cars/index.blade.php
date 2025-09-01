@@ -73,6 +73,7 @@
                             <th>Inscription</th>
                             <th>Marque</th>
                             <th>Modèle</th>
+                            <th>Catégorie</th>
                             <th>Année</th>
                             <th>Kilométrage (km)</th>
                             <th class="text-center">Actions</th>
@@ -91,6 +92,7 @@
                                 <td class="fw-semibold">{{ $car->registration_number }}</td>
                                 <td>{{ $car->brand }}</td>
                                 <td>{{ $car->model }}</td>
+                                <td class="text text-primary">{!! $car->category->title ?? 'N/A' !!}</td>
                                 <td>{{ $car->year }}</td>
                                 <td>{{ number_format($car->mileage) }}</td>
                                 <td class="text-center">

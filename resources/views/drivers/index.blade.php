@@ -15,9 +15,9 @@
     <div class="card shadow-sm mb-4">
         <div class="card-body">
             <form method="GET" action="{{ route('drivers.index') }}" class="row g-3 align-items-end">
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <label class="form-label fw-semibold">Search</label>
-                    <input type="text" name="search" value="{{ request('search') }}" class="form-control" placeholder="Name or License">
+                    <input type="text" name="search" value="{{ request('search') }}" class="form-control" placeholder="Name, License or CNI">
                 </div>
                 <div class="col-md-3">
                     <label class="form-label fw-semibold">License Expiry</label>
@@ -46,6 +46,7 @@
                         <tr>
                             <th>Photo</th>
                             <th>Nom du Chauffeur</th>
+                            <th>CNI</th> {{-- Nouvelle colonne --}}
                             <th>Numero Permis</th>
                             <th>Date d'Expiration</th>
                             <th>Téléphone</th>
@@ -57,12 +58,13 @@
                             <tr>
                                 <td>
                                     @if($driver->photo)
-                                        <img src="{{ asset('storage/'.$driver->photo) }}" class="rounded shadow-sm" width="60" height="60" style="object-fit:cover;">
+                                        <img src="{{ asset('storage/'.$driver->photo) }}" class="rounded shadow-sm" width="80" height="80" style="object-fit:cover;">
                                     @else
                                         <i class="fa fa-user-circle text-muted fs-3"></i>
                                     @endif
                                 </td>
                                 <td class="fw-semibold">{{ $driver->name }}</td>
+                                <td>{{ $driver->cni_driver ?? '-' }}</td> {{-- Affichage du CNI --}}
                                 <td>{{ $driver->license_number }}</td>
                                 <td>
                                     <span class="badge {{ \Carbon\Carbon::parse($driver->license_expiry)->isPast() ? 'bg-danger' : 'bg-success' }}">
@@ -85,7 +87,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="6" class="text-center text-muted py-4">No drivers found</td>
+                                <td colspan="7" class="text-center text-muted py-4">No drivers found</td>
                             </tr>
                         @endforelse
                     </tbody>

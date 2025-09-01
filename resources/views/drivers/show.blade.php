@@ -34,6 +34,10 @@
                                     <span class="fw-bold">{{ $driver->name }}</span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <span><i class="fa fa-id-card me-2"></i>CNI</span>
+                                    <span>{{ $driver->cni_driver }}</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
                                     <span><i class="fa fa-phone me-2"></i>Phone</span>
                                     <span>{{ $driver->phone }}</span>
                                 </li>

@@ -25,6 +25,11 @@
                         </div>
 
                         <div class="mb-3">
+                            <label class="form-label">CNI Chauffeur</label>
+                            <input type="text" name="cni_driver" class="form-control" value="{{ old('cni_driver',$driver->cni_driver ?? '') }}">
+                        </div>
+
+                        <div class="mb-3">
                             <label class="form-label">Téléphone</label>
                             <input type="text" name="phone" class="form-control" value="{{ old('phone',$driver->phone ?? '') }}">
                         </div>

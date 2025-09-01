@@ -115,7 +115,12 @@
                                     </li>
                                     <li>
                                         <a href="{{ route("refuelings.index") }}">
-                                            <span class="sub-item"><i data-feather="fuel"></i> Ravitaillement</span>
+                                            <span class="sub-item"><i data-feather="pie-chart"></i> Ravitaillement</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route("car_categories.index") }}">
+                                            <span class="sub-item"><i data-feather="sliders"></i> Categorie Voiture</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -128,10 +133,15 @@
                             <h4 class="text-section text-light"><strong>Stock Management</strong></h4>
                             <hr class="text text-info">
                         </li>
-                            <li class="nav-item">
-                            <div class="collapse show" id="base"> <!-- add 'show' class to keep it open -->
-                                <ul class="nav nav-collapse">
-                                    <li class="">
+                         <li class="nav-item">
+                            <a data-bs-toggle="collapse" href="#base">
+                            <i class="fas fa-layer-group"></i>
+                             <h6 class="text-section text-light"><strong>Stock</strong></h6>
+                            <span class="h3 caret"></span>
+                            </a>
+                            <div class="collapse" id="base">
+                            <ul class="nav nav-collapse">
+                               <li class="">
                                         <a href="{{{ route("product.index") }}}">
                                            <span class="sub-item"><i data-feather="package"></i> Produits</span>
                                         </a>
@@ -161,9 +171,9 @@
                                             <span class="sub-item"><i data-feather="layers"></i> Unite de Mesure</span>
                                         </a>
                                     </li>
-                                </ul>
+                            </ul>
                             </div>
-                        </li>
+                         </li>
                         <li class="nav-section">
                             <span class="sidebar-mini-icon">
                                 <i class="fa fa-ellipsis-h"></i>

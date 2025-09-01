@@ -56,6 +56,7 @@ Route::resource('category', CategoryController::class);
 Route::resource('supply', SupplyController::class);
 Route::resource('sortie', SortieController::class);
 Route::resource('inventory', InventoryController::class);
+Route::resource('car_categories', \App\Http\Controllers\CarCategoryController::class);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

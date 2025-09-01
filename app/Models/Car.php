@@ -8,7 +8,7 @@ class Car extends Model
 {
     protected $fillable = [
         'registration_number', 'brand', 'model', 'year', 'color', 'mileage',
-        'fuel_type', 'tank_capacity', 'chassis_number', 'engine_number',
+        'fuel_type', 'tank_capacity', 'chassis_number', 'engine_number','category_id',
         'insurance_expiry', 'technical_check_expiry', 'status', 'photo'
     ];
 
@@ -30,5 +30,10 @@ class Car extends Model
 
     public function insurances() {
         return $this->hasMany(Insurance::class);
+    }
+
+     public function category()
+    {
+        return $this->belongsTo(CarCategory::class,'category_id');
     }
 }
